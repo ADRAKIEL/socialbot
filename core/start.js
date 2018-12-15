@@ -84,12 +84,12 @@ let scrape = async () => {
 function getData(){
 	let cyphertext = '';
 
-	enckey = Sim.simenckey;
+	enckey = sim.enckey;
 
 	console.info('key sets as ', '123-' + enckey + 'aes');
 
-	sets.user.mail = encrypt(simmail, enckey);
-	sets.user.pass = encrypt(simpass, enckey);
+	sets.user.mail = encrypt(sim.mail, enckey);
+	sets.user.pass = encrypt(sim.pass, enckey);
 
 	console.info('data retrived ', sets.user);
 }
