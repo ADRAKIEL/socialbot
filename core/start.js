@@ -3,9 +3,7 @@ const puppeteer = require('../node_modules/puppeteer');
 const CrtptoJS = require('crypto-js');
 
 // My Sims
-const simmail = 'ismaelme@live.com';
-const simpass = 'HolaFaceBook13.';
-const simenckey = '147';
+const sim = require ('./sim.js');
 
 // Global sets and vars
 const facebook = 'https://facebook.com';
@@ -86,9 +84,9 @@ let scrape = async () => {
 function getData(){
 	let cyphertext = '';
 
-	enckey = simenckey;
+	enckey = Sim.simenckey;
 
-	console.info('key sets as ', '123-'+enckey+'aes');
+	console.info('key sets as ', '123-' + enckey + 'aes');
 
 	sets.user.mail = encrypt(simmail, enckey);
 	sets.user.pass = encrypt(simpass, enckey);
