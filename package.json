@@ -1,0 +1,31 @@
+{
+  "name": "socialbot",
+  "version": "1.0.0",
+  "description": "Social Bot is a helper to handled several post previously defined and saved in a database.",
+  "main": "index.js",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "puppeteer": "^1.11.0",
+    "puppeteer-core": "^1.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm run lint --silent && npm run coverage && npm run test-doclint && npm run test-node6-transformer"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LTTE-WEB-DEVELOPMENT/socialbot.git"
+  },
+  "keywords": [
+    "Social",
+    "Bot",
+    "Puppeteer",
+    "Automation"
+  ],
+  "author": "Adrakiel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LTTE-WEB-DEVELOPMENT/socialbot/issues"
+  },
+  "homepage": "https://github.com/LTTE-WEB-DEVELOPMENT/socialbot#readme"
+}
