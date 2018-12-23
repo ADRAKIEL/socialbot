@@ -44,9 +44,9 @@ let scrape = async () => {
 	   await page.click(sets.sel.log);
 
 	// Start Post Seccion
-	// await page.waitFor(5000);
+	await page.waitFor(5000);
 	sets.sel.post.text = service.getPostArea(page);
-	console.info('post sets as ', sets.sel.post.text)
+	console.info('Post area selector: ', sets.sel.post.text)
 	await page.waitFor(100);
 	//await page.click(sets.sel.post.text);
 

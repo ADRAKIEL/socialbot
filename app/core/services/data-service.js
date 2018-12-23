@@ -2,9 +2,9 @@ const sim = require ('./sim.js');
 const CrytptoJS = require('crypto-js');
 
 let	user = {
-		'mail': '',
-		'pass': ''
-	};
+	'mail': '',
+	'pass': ''
+};
 
 module.exports = {
 	getData: function(){
@@ -20,13 +20,19 @@ module.exports = {
 		console.info('data retrived ', user);
 		return user;
 	},
-	getPostArea: function(page){
-		let post = '';
-		let elements = '//*[@id="js_e"]';
+	getPostArea: async function(page){
+		let elements = '';
 
-		console.info('Post retrive: ', post);
-		console.info('====', elements);
-		return 'textarea'; //post[0].id;
+		try{
+			await page.waitForSelector('textarea', { timeout: 200 });
+
+			elements = await page.evaluate(() => document.querySelector('textarea'));
+		} catch (e) {
+			console.info('Error on getPostArea: ', e.message);
+		} finally {
+			console.info('Finally getPostArea.');
+		}
+		return elements;
 	},
 	encrypt: function(data, key){
 		let textenc = '';
@@ -35,15 +41,23 @@ module.exports = {
 			let bytes  = CrytptoJS.AES.encrypt(data, key);
 			textenc = bytes.toString();
 		} catch (e){
-			console.info(e);
-			textenc = 'Error ' + e;
+			console.info(e.message);
+			textenc = 'ErrorEnc';
 		}
 
 		return textenc.toString();
 	},
 	decrypt: function(data, key){
-		let chain = CrytptoJS.AES.decrypt(data, enckey);
-		return chain.toString(CrytptoJS.enc.Utf8);
+		let textdec = '';
+		
+		try{
+			let chain = CrytptoJS.AES.decrypt(data, enckey);
+			textdec = chain.toString(CrytptoJS.enc.Utf8);
+		} catch (e){
+			console.info(e.message);
+			textdec = 'ErrorDec';
+		}
+		return textdec;
 	}
 }
 
